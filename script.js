@@ -18,13 +18,13 @@ const game = new Phaser.Game({
 
 const preload = () => {
 
-    this.load.image('background', 'assets/background.png');
+  this.load.image('background', 'assets/background.png');
   this.load.image('road', 'assets/road.png');
   this.load.image('column', 'assets/column.png');
   this.load.spritesheet('bird', 'assets/bird.png', { frameWidth: 64, frameHeight: 96 });
 }
 const create = () => {
-
+    const background = this.add.image(0, 0, 'background').setOrigin(0, 0);
 }
 const update = () => {
 
