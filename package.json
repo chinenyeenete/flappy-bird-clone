@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@tailwindcss/upgrade": "^4.1.11"
+  }
+}
