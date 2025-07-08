@@ -1,7 +1,7 @@
 const game = new Phaser.Game({
     renderer: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
     physics: {
         default: 'arcade',
         arcade: {
@@ -16,16 +16,18 @@ const game = new Phaser.Game({
     }
 });
 
-const preload = () => {
+function preload(){
 
   this.load.image('background', 'assets/background.png');
   this.load.image('road', 'assets/road.png');
   this.load.image('column', 'assets/column.png');
   this.load.spritesheet('bird', 'assets/bird.png', { frameWidth: 64, frameHeight: 96 });
 }
-const create = () => {
+function create(){
     const background = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    background.displayWidth = this.sys.game.config.width;
+    background.displayHeight = this.sys.game.config.height;
 }
-const update = () => {
+function update(){
 
 }
