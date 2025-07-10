@@ -21,7 +21,7 @@ function preload(){
   this.load.image('background', 'assets/background.png');
   this.load.image('road', 'assets/road.png');
   this.load.image('column', 'assets/column.png');
-  this.load.spritesheet('bird', 'assets/bird.png', { frameWidth: 64, frameHeight: 96 });
+  this.load.spritesheet('bird', 'assets/sprite.png', { frameWidth: 64, frameHeight: 96 });
 }
 
 let bird;
