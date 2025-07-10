@@ -28,6 +28,7 @@ let bird;
 let hasLanded = false;
 let cursors;
 let hasBumped = false;
+let message;
 
 function create(){
     const background = this.add.image(0, 0, 'background').setOrigin(0, 0);
@@ -59,6 +60,9 @@ function create(){
     this.physics.add.collider(bird, bottomCols);
 
     cursors = this.input.keyboard.createCursorKeys();
+
+    message = this.add.text(40, 5, `Instruction: Press space bar to start.`, { fontFamily:' Times, serif', color: "blue", backgroundColor: 'white'  })
+    Phaser.Display.Align.In.BottomCenter(message, background, 400, 410)
 }
 
 let hasGameStarted = false;
@@ -67,16 +71,24 @@ function update(){
     if (cursors.up.isDown && !hasLanded && !hasBumped){
         bird.setVelocityY(-160)
     }
-    if (!hasLanded && !hasBumped &&!hasGameStarted){
+    if (!hasLanded || !hasBumped ){
         bird.setVelocityX(50);
     }
-    if (hasLanded){
+    if (hasLanded || hasBumped || !hasGameStarted){
         bird.setVelocityX(0);
     }
     if (cursors.space.isDown && !hasGameStarted){
         hasGameStarted = true;
+        message.text = 'Instruction: Press the arrow up button to stay up in the air. \n        Be careful of hitting the columns and the ground!'
     }
     if(!hasGameStarted){
         bird.setVelocityY(-160);
+    }
+    if (hasLanded || hasBumped){
+       message.text = "Oopsies!"
+    }
+    if (bird.x > 0.9375*window.innerWidth){
+        bird.setVelocityY(40);
+        message.text = 'Yayyy!';
     }
 }
